@@ -14,24 +14,23 @@ export function getBestQuestionResult(answerList, questions, question_results) {
   // optionCount[I] = 2; optionCount[J] = 1
 
   // 遍历题目列表
-  for (const question of questions) {
-    // 遍历答案列表
-    for (const answer of answerList) {
-      // 遍历题目中的选项
-      for (const option of question.options) {
-        // 如果答案和选项的key匹配
-        if (option.key === answer) {
-          // 获取选项的result属性
-          const result = option.result;
+  for (let i = 0; i < answerList.length; i++) {
+    const question = questions[i];
+    const answer = answerList[i];
+    // 遍历题目中的选项
+    for (const option of question.options) {
+      // 如果答案和选项的key匹配
+      if (option.key === answer) {
+        // 获取选项的result属性
+        const result = option.result;
 
-          // 如果result属性不在optionCount中，初始化为0
-          if (!optionCount[result]) {
-            optionCount[result] = 0;
-          }
-
-          // 在optionCount中增加计数
-          optionCount[result]++;
+        // 如果result属性不在optionCount中，初始化为0
+        if (!optionCount[result]) {
+          optionCount[result] = 0;
         }
+
+        // 在optionCount中增加计数
+        optionCount[result]++;
       }
     }
   }
@@ -59,7 +58,7 @@ export function getBestQuestionResult(answerList, questions, question_results) {
 }
 
 // 示例数据
-const answerList = ["B","B","B","A"];
+const answerList = ["B", "B", "B", "A"];
 const questions = [
   {
     title: "你通常更喜欢",

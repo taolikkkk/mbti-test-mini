@@ -13,7 +13,7 @@ export default () => {
   // 当前题目序号（从 1 开始）
   const [current, setCurrent] = useState<number>(1);
   // 当前题目
-  const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
+  const [currentQuestion, setCurrentQuestion] = useState<Question>(questions[0]);
   const questionOptions = currentQuestion.options.map((option) => {
     return {label: `${option.key}. ${option.value}`, value: option.key};
   });
